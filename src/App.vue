@@ -1,26 +1,42 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="header">
+      <ul class="header-button-left">
+        <li>Cancel</li>
+      </ul>
+      <ul class="header-button-right">
+        <li>Next</li>
+      </ul>
+      <img src="./assets/logo.png" class="logo" />
+    </div>
+
+    <Container :posts="posts"/>
+
+    <div class="footer">
+      <ul class="footer-button-plus">
+        <input type="file" id="file" class="inputfile" />
+        <label for="file" class="input-plus">+</label>
+      </ul>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import Container from './components/container.vue'
+import Posts from './assets/post-data'
 
 export default {
   name: 'App',
+  data(){
+    return {
+      posts: Posts
+    }
+  },
   components: {
-    HelloWorld
+    Container
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  @import './assets/style.css';
 </style>
