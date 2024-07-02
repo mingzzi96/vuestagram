@@ -1,14 +1,14 @@
 <template>
   <div class="post">
     <div class="post-header">
-      <div class="profile"></div>
-      <span class="profile-name">{{posts[0].name}}</span>
+    <div class="profile" :style="{ backgroundImage : `url(${post.postImage })` }"></div>
+      <span class="profile-name">{{post.name}}</span>
     </div>
-    <div class="post-body"></div>
+    <div class="post-body" :style="{ backgroundImage : `url(${post.userImage })` }"></div>
     <div class="post-content">
-      <p>{{posts[0].likes}} Likes</p>
-      <p><strong>{{posts[0].name}}</strong> {{posts[0].content}}</p>
-      <p class="date">{{posts[0].date}}</p>
+      <p>{{post.likes}} Likes</p>
+      <p><strong>{{post.name}}</strong> {{post.content}}</p>
+      <p class="date">{{post.date}}</p>
     </div>
   </div> 
 </template>
@@ -17,7 +17,7 @@
 export default {
     name: "PostPage",
     props: {
-        posts: Array
+        post: Object
     }
 }
 </script>

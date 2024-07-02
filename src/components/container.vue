@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Post v-for="(post, index) in posts" :key="post.title+index" :posts="posts" />
+        <Post v-for="(post, index) in posts" :key="post.title+index" :post="posts[index]" />
     </div>
 </template>
 
