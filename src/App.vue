@@ -10,7 +10,6 @@
       <li v-if="step === 2" @click="clickPublish">Publish</li>
       <li v-else @click="clickNext">Next</li>
     </ul>
-    <!-- <img src="./assets/logo.png" class="logo" /> -->
   </div>
 
   <Container
