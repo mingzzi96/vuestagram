@@ -9,13 +9,13 @@
       <img src="./assets/logo.png" class="logo" />
     </div>
 
-    <Container :posts="posts"/>
+    <Container :posts="posts" :step="step" :uploadImageUrl="uploadImageUrl" />
 
     <button @click="more">더보기</button>
 
     <div class="footer">
       <ul class="footer-button-plus">
-        <input type="file" id="file" class="inputfile" />
+        <input @change="upload" type="file" id="file" class="inputfile" />
         <label for="file" class="input-plus">+</label>
       </ul>
   </div>
@@ -31,6 +31,8 @@ export default {
   name: 'App',
   data(){
     return {
+      step: 0,
+      uploadImageUrl: '',
       clicked: 0,
       posts: Posts
     }
@@ -52,6 +54,13 @@ export default {
         console.log(this.clicked)
         this.posts.push(result.data)
       })
+    },
+    upload(e){
+      let file = e.target.files;
+      // 이미지 url
+      let url = URL.createObjectURL(file[0])
+      this.uploadImageUrl = url
+      this.step++
     }
   }
 }
