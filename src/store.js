@@ -6,6 +6,11 @@ const store = createStore({
         clickedFilterName: ''
     }
   },
+  mutations : {
+    changeFilterName(state, name){
+        state.clickedFilterName = name
+    }
+  }
 })
 
 export default store

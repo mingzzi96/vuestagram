@@ -1,5 +1,5 @@
 <template>
-  <div @click="$store.state.clickedFilterName = filter" :class="`filter-item ${filter}`" :style="`background-image:url(${uploadedImageUrl})`">
+  <div @click="$store.commit('changeFilterName', filter)" :class="`filter-item ${filter}`" :style="`background-image:url(${uploadedImageUrl})`">
     <slot></slot>
 </div> 
 </template>
