@@ -1,19 +1,22 @@
 <template>
-  <div @click="$store.commit('changeFilterName', filter)" :class="`filter-item ${filter}`" :style="`background-image:url(${uploadedImageUrl})`">
+  <div
+    @click="$store.commit('changeFilterName', filter)"
+    :class="`filter-item ${filter}`"
+    :style="`background-image:url(${uploadedImageUrl})`"
+  >
     <slot></slot>
-</div> 
+  </div>
 </template>
 
 <script>
 export default {
-    name:'FilterBox',
-    props: {
-        uploadedImageUrl: String,
-        filter: String
-    },
-    methods: {
-    }
-}
+  name: "FilterBox",
+  props: {
+    uploadedImageUrl: String,
+    filter: String,
+  },
+  methods: {},
+};
 </script>
 
 <style>
@@ -23,8 +26,8 @@ export default {
   margin: 10px 10px 10px auto;
   padding: 8px;
   display: inline-block;
-  color : white;
+  color: white;
   background-size: cover;
-  background-position : center;
+  background-position: center;
 }
 </style>
