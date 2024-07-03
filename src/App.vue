@@ -38,7 +38,7 @@ export default {
   name: "App",
   data() {
     return {
-      step: 0,
+      step: 3,
       uploadedImageUrl: "",
       uploadedContent: "",
       filterName: "",
