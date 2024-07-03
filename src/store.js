@@ -11,7 +11,7 @@ const store = createStore({
     };
   },
   mutations: {
-    // ! payload = 받아온 data를 의미함
+    // ! 함수를 만들어서 사용할 수 있음. payload = 받아온 data를 의미함
     changeFilterName(state, payload) {
       state.clickedFilterName = payload;
     },
@@ -28,6 +28,7 @@ const store = createStore({
     },
   },
   actions: {
+    // ! 비동기 처리 해줄 수 있는 곳
     getMore(store) {
       axios
         .get("https://codingapple1.github.io/vue/more0.json")
