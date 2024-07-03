@@ -85,7 +85,7 @@ export default {
         date: "May 15",
         liked: false,
         content: this.uploadedContent,
-        filter: "perpetua"
+        filter: this.state.clickedFilterName
       };
       this.step.unshift(uploaded);
       this.step = 0;

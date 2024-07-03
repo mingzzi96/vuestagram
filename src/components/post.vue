@@ -6,7 +6,7 @@
     </div>
     <div class="post-body" :style="{ backgroundImage : `url(${post.userImage })` }"></div>
     <div class="post-content">
-      <p>{{post.likes}} Likes</p>
+      <p @click="$store.commit('changeLikes')">{{$store.state.likes}} Likes</p>
       <p><strong>{{post.name}}</strong> {{post.content}}</p>
       <p class="date">{{post.date}}</p>
     </div>

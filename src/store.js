@@ -3,12 +3,23 @@ import { createStore } from 'vuex'
 const store = createStore({
   state(){
     return {
-        clickedFilterName: ''
+        clickedFilterName: '',
+        likes: 0,
+        isClicked: false,
     }
   },
   mutations : {
-    changeFilterName(state, name){
-        state.clickedFilterName = name
+    // payload -> 받아온 data를 의미함
+    changeFilterName(state, payload){
+        state.clickedFilterName = payload
+    },
+    changeLikes(state) {
+        state.isClicked = !state.isClicked;
+        if(state.isClicked === true) {
+            return state.likes++
+        }else {
+            return state.likes--
+        }
     }
   }
 })
