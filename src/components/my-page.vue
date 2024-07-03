@@ -41,7 +41,8 @@ export default {
     // ! 해결법은 watch를 사용해서 데이터 변경을 감지해야한다. react의 의존성배열 같은 느낌
     watch(followers, (newVal) => {
       computedResult.value = newVal.length;
-      console.log(computedResult.value); // followers 배열이 업데이트될 때마다 길이를 출력
+      // watch 덕분에 followers가 변화될 때 마다 그 값이 업데이트 되고, 출력됨.
+      console.log(computedResult.value);
     });
 
     onMounted(() => {
