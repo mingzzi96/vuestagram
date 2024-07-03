@@ -12,7 +12,7 @@
 
     <Container :filterName="filterName" :filters="filters" :posts="posts" :step="step" :uploadedImageUrl="uploadedImageUrl" @write="uploadedContent = $event" />
 
-    <button @click="more">더보기</button>
+    <button @click="$store.dispatch('getMore')">더보기</button>
 
     <div class="footer">
       <ul class="footer-button-plus">
