@@ -7,6 +7,9 @@
       <li v-if="step === 2" @click="clickPublish">Publish</li>
       <li v-else @click="clickNext">Next</li>
     </ul>
+    <ul>
+      <li @click="step = 3">Followers</li>
+    </ul>
     <img src="./assets/logo.png" class="logo" />
   </div>
 
@@ -38,7 +41,7 @@ export default {
   name: "App",
   data() {
     return {
-      step: 3,
+      step: 0,
       uploadedImageUrl: "",
       uploadedContent: "",
       filterName: "",
