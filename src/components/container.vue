@@ -38,6 +38,7 @@
         />
       </div>
     </div>
+    <!-- 팔로워 검색 페이지 -->
     <div v-if="step === 3">
       <MyPage />
     </div>
