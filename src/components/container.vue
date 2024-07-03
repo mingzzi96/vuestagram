@@ -17,7 +17,7 @@
         </div>
         <div v-if="step === 2">
             <!-- 글작성페이지 -->
-            <div class="upload-image"></div>
+            <div class="upload-image" :style="{backgroundImage : `url(${uploadImageUrl})`}"></div>
             <div class="write">
                 <textarea class="write-box">write!</textarea>
             </div>

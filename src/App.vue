@@ -1,10 +1,10 @@
 <template>
   <div class="header">
       <ul class="header-button-left">
-        <li>Cancel</li>
+        <li @click="clickCancel">Cancel</li>
       </ul>
       <ul class="header-button-right">
-        <li>Next</li>
+        <li @click="clickNext">Next</li>
       </ul>
       <img src="./assets/logo.png" class="logo" />
     </div>
@@ -61,6 +61,16 @@ export default {
       let url = URL.createObjectURL(file[0])
       this.uploadImageUrl = url
       this.step++
+    },
+    clickNext(){
+      if(this.step === 2){
+        return false
+      }
+
+      return this.step++
+    },
+    clickCancel(){
+      this.step = 0
     }
   }
 }
