@@ -3,14 +3,14 @@
     <ul class="header-button-left">
       <li @click="clickCancel">Cancel</li>
     </ul>
+    <ul>
+      <li @click="step = 3">Check Followers</li>
+    </ul>
     <ul class="header-button-right">
       <li v-if="step === 2" @click="clickPublish">Publish</li>
       <li v-else @click="clickNext">Next</li>
     </ul>
-    <ul>
-      <li @click="step = 3">Followers</li>
-    </ul>
-    <img src="./assets/logo.png" class="logo" />
+    <!-- <img src="./assets/logo.png" class="logo" /> -->
   </div>
 
   <Container
@@ -63,7 +63,7 @@ export default {
     },
     upload(e) {
       let file = e.target.files;
-      // 이미지 url
+      // 이미지 url을 만들어준다. 이미지 업로드할 때 꼭 사용.
       let url = URL.createObjectURL(file[0]);
       this.uploadedImageUrl = url;
       this.step++;
