@@ -35,9 +35,7 @@
         <textarea
           @input="$emit('write', $event.target.value)"
           class="write-box"
-        >
-write!</textarea
-        >
+        />
       </div>
     </div>
   </div>
