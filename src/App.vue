@@ -12,7 +12,7 @@
 
     <Container :filterName="filterName" :filters="filters" :posts="posts" :step="step" :uploadedImageUrl="uploadedImageUrl" @write="uploadedContent = $event" />
 
-    <button @click="$store.dispatch('getMore')">더보기</button>
+    <button @click="more">더보기</button>
 
     <div class="footer">
       <ul class="footer-button-plus">
@@ -27,7 +27,6 @@
 import Container from './components/container.vue'
 import Posts from './assets/post-data'
 import Filters from './assets/filter-data'
-import axios from 'axios'
 
 export default {
   name: 'App',
@@ -46,18 +45,12 @@ export default {
     Container
   },
   methods: {
-    more(){
-      if(this.clicked >= 1){
-        return axios.get('https://codingapple1.github.io/vue/more1.json')
-        .then((result) => {
-          this.posts.push(result.data)
-        })
-      }
-      return axios.get('https://codingapple1.github.io/vue/more0.json')
-      .then((result) => {
-        this.clicked++
-        this.posts.push(result.data)
-      })
+    more() {
+      // ! store actions를 실행시키는 방법.
+      // ! dispatch를 활용하여야 한다.
+      this.$store.dispatch('getMore').then(() => {
+        this.posts.push(this.$store.state.more);
+      });
     },
     upload(e){
       let file = e.target.files;
