@@ -41,7 +41,7 @@ export default {
           filteredFollowers.value = result.data;
         })
         .catch((error) => {
-          console.error("Error fetching followers:", error);
+          console.error("에러 발생: ", error);
         });
     });
 
