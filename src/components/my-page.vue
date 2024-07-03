@@ -24,7 +24,8 @@ export default {
   name: "MyPage",
   setup() {
     // ! composition API 사용법
-    // 항상 ref를 사용해서 사용해야함.
+    // ? : ref(원시형 데이터에 사용)나 reactive(참조형 데이터에 사용)를 사용하면 된다.
+
     let followers = ref([]);
     let filteredFollowers = ref([]);
 
