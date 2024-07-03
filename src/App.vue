@@ -4,12 +4,13 @@
         <li @click="clickCancel">Cancel</li>
       </ul>
       <ul class="header-button-right">
-        <li @click="clickNext">Next</li>
+        <li v-if="step === 2" @click="clickPublish">Publish</li>
+        <li v-else @click="clickNext">Next</li>
       </ul>
       <img src="./assets/logo.png" class="logo" />
     </div>
 
-    <Container :posts="posts" :step="step" :uploadImageUrl="uploadImageUrl" />
+    <Container :filters="filters" :posts="posts" :step="step" :uploadedImageUrl="uploadedImageUrl" @write="uploadedContent = $event" />
 
     <button @click="more">더보기</button>
 
@@ -25,6 +26,7 @@
 
 import Container from './components/container.vue'
 import Posts from './assets/post-data'
+import Filters from './assets/filter-data'
 import axios from 'axios'
 
 export default {
@@ -32,9 +34,11 @@ export default {
   data(){
     return {
       step: 0,
-      uploadImageUrl: '',
+      uploadedImageUrl: '',
+      uploadedContent: '',
       clicked: 0,
-      posts: Posts
+      posts: Posts,
+      filters: Filters
     }
   },
   components: {
@@ -59,7 +63,7 @@ export default {
       let file = e.target.files;
       // 이미지 url
       let url = URL.createObjectURL(file[0])
-      this.uploadImageUrl = url
+      this.uploadedImageUrl = url
       this.step++
     },
     clickNext(){
@@ -71,6 +75,20 @@ export default {
     },
     clickCancel(){
       this.step = 0
+    },
+    publish(){
+      let uploaded = {
+        name: "Kim Hyun",
+        userImage: "https://picsum.photos/100?random=3",
+        postImage: this.uploadedImageUrl,
+        likes: 36,
+        date: "May 15",
+        liked: false,
+        content: this.uploadedContent,
+        filter: "perpetua"
+      };
+      this.step.unshift(uploaded);
+      this.step = 0;
     }
   }
 }

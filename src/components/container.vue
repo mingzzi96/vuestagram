@@ -6,37 +6,40 @@
 
         <div v-if="step === 1">
             <!-- 필터선택페이지 -->
-            <div class="upload-image" :style="{backgroundImage : `url(${uploadImageUrl})`}"></div>
+            <div class="upload-image" :style="{backgroundImage : `url(${uploadedImageUrl})`}"></div>
             <div class="filters">
-                <div class="filter-1"></div>
-                <div class="filter-1"></div>
-                <div class="filter-1"></div>
-                <div class="filter-1"></div>
-                <div class="filter-1"></div>
+                <FilterBox v-for="(filter, index) in filters" :key="filter + index" :uploadedImageUrl="uploadedImageUrl" :filter="filter"></FilterBox>
             </div>
         </div>
         <div v-if="step === 2">
             <!-- 글작성페이지 -->
-            <div class="upload-image" :style="{backgroundImage : `url(${uploadImageUrl})`}"></div>
+            <div class="upload-image" :style="{backgroundImage : `url(${uploadedImageUrl})`}"></div>
             <div class="write">
-                <textarea class="write-box">write!</textarea>
+                <textarea @input="$emit('write', $event.target.value)" class="write-box">write!</textarea>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import FilterBox from './filter-box.vue'
 import Post from './post.vue'
 
 export default {
     name: "ContainerPage",
+    data(){
+        return {
+        }
+    },
     props: {
         posts: Array,
         step: Number,
-        uploadImageUrl: String
+        uploadedImageUrl: String,
+        filters: Array
     },
     components: {
-        Post
+        Post,
+        FilterBox
     }
 }
 </script>
