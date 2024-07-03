@@ -18,7 +18,7 @@
 
 <script>
 import axios from "axios";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 
 export default {
   name: "MyPage",
@@ -28,12 +28,22 @@ export default {
 
     let followers = ref([]);
     let filteredFollowers = ref([]);
+    let computedResult = ref(0);
 
     const searchName = (name) => {
       filteredFollowers.value = followers.value.filter((user) =>
         user.name.toLowerCase().includes(name.toLowerCase())
       );
     };
+    // ! 하지만 이렇게 찍어보면 length가 제대로 나오지 않고 0이 출력됨.
+    // console.log(computedResult.value);
+    // ! 왜냐하면 비동기 처리인 axios보다 먼저 실행되어서 배열의 길이가 0인것임.
+    // ! 해결법은 watch를 사용해서 데이터 변경을 감지해야한다. react의 의존성배열 같은 느낌
+    watch(followers, (newVal) => {
+      computedResult.value = newVal.length;
+      console.log(computedResult.value); // followers 배열이 업데이트될 때마다 길이를 출력
+    });
+
     onMounted(() => {
       axios
         .get("/follower.json")
