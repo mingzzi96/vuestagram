@@ -1,7 +1,7 @@
 <template>
-  <div :class="`filter-item ${filter}`" :style="`background-image:url(${uploadedImageUrl})`">
+  <div @click="$store.state.clickedFilterName = filter" :class="`filter-item ${filter}`" :style="`background-image:url(${uploadedImageUrl})`">
     <slot></slot>
-    </div> 
+</div> 
 </template>
 
 <script>
@@ -10,6 +10,8 @@ export default {
     props: {
         uploadedImageUrl: String,
         filter: String
+    },
+    methods: {
     }
 }
 </script>

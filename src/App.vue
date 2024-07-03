@@ -10,7 +10,7 @@
       <img src="./assets/logo.png" class="logo" />
     </div>
 
-    <Container :filters="filters" :posts="posts" :step="step" :uploadedImageUrl="uploadedImageUrl" @write="uploadedContent = $event" />
+    <Container :filterName="filterName" :filters="filters" :posts="posts" :step="step" :uploadedImageUrl="uploadedImageUrl" @write="uploadedContent = $event" />
 
     <button @click="more">더보기</button>
 
@@ -36,6 +36,7 @@ export default {
       step: 0,
       uploadedImageUrl: '',
       uploadedContent: '',
+      filterName: '',
       clicked: 0,
       posts: Posts,
       filters: Filters
@@ -55,7 +56,6 @@ export default {
       return axios.get('https://codingapple1.github.io/vue/more0.json')
       .then((result) => {
         this.clicked++
-        console.log(this.clicked)
         this.posts.push(result.data)
       })
     },
@@ -90,7 +90,7 @@ export default {
       this.step.unshift(uploaded);
       this.step = 0;
     }
-  }
+  },
 }
 </script>
 

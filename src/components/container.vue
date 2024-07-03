@@ -6,7 +6,7 @@
 
         <div v-if="step === 1">
             <!-- 필터선택페이지 -->
-            <div class="upload-image" :style="{backgroundImage : `url(${uploadedImageUrl})`}"></div>
+            <div :class="`upload-image ${$store.state.clickedFilterName}`" :style="{backgroundImage : `url(${uploadedImageUrl})`}"></div>
             <div class="filters">
                 <FilterBox v-for="(filter, index) in filters" :key="filter + index" :uploadedImageUrl="uploadedImageUrl" :filter="filter">
                     {{filter}}
@@ -37,7 +37,7 @@ export default {
         posts: Array,
         step: Number,
         uploadedImageUrl: String,
-        filters: Array
+        filters: Array,
     },
     components: {
         Post,
