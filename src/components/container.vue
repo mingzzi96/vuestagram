@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- 메인페이지 -->
     <template v-if="step === 0">
       <Post
         v-for="(post, index) in posts"
